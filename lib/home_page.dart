@@ -1,25 +1,39 @@
 import 'package:flutter/material.dart';
 
-class HomePage extends StatefulWidget{
+class HomePage extends StatefulWidget {
   @override
-  State<StatefulWidget>createState(){
+  State<StatefulWidget> createState() {
     return HomePageState();
   }
 }
 
-class HomePageState extends State<HomePage>{
-
+class HomePageState extends State<HomePage> {
   int counter = 0;
 
-
   @override
-  Widget build(BuildContext context){
-    return Center(child: GestureDetector(child: Text('Contador: $counter'), onTap: (){
-      setState(() {
-        counter++;
-      print('clicado');
-      });
-      
-    },));
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Home Page')
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: (){
+           setState(() {
+          counter++;
+          print('clicado');
+        });
+        }),
+      body: Center(
+        child: GestureDetector(
+      child: Text('Contador: $counter', style: TextStyle(fontSize: 20),),
+      onTap: () {
+        setState(() {
+          counter++;
+          print('clicado');
+        });
+      },
+    )),
+    );
   }
 }
